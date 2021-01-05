@@ -1,0 +1,33 @@
+{
+  "points": {
+    "defaultPoints": 3
+  },
+  "groups": [
+    {
+      "match": "A.+"
+    },
+    {
+      "match": "B.+",
+      "defaultPoints": 0.5
+    },
+    {
+      "match": "C.+",
+      "tests": [
+        {
+          "match": "CLessPoints",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "match": "D.+",
+      "defaultPoints": 1,
+      "tests": [
+        {
+          "match": "DMorePoints",
+          "points": 2
+        }
+      ]
+    }
+  ]
+}
