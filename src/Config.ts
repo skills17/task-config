@@ -6,6 +6,10 @@ import Points from './types/Points';
 import RawGroup from './types/RawGroup';
 
 export default class Config {
+  private id?: string;
+
+  private type?: string;
+
   private source: string[] = ['./src/**'];
 
   private serve: Serve = {
@@ -110,6 +114,8 @@ export default class Config {
     const config = JSON.parse(fileContent.toString());
 
     // set config
+    this.id = config.id;
+    this.type = config.type;
     this.source = config.source ?? this.source;
     this.serve = { ...this.serve, ...config.serve };
     this.points = { ...this.points, ...config.points };
@@ -125,6 +131,14 @@ export default class Config {
     this.loadGroups(this.groups).forEach((group) => run.addGroup(group));
 
     return run;
+  }
+
+  public getId(): string | undefined {
+    return this.id;
+  }
+
+  public getType(): string | undefined {
+    return this.type;
   }
 
   public getSource(): string[] {
