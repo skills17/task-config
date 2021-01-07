@@ -1,3 +1,4 @@
+import path from 'path';
 import { promises as fs } from 'fs';
 import findUp from 'find-up';
 import { Group, Override, Strategy, TestRun } from '@skills17/test-result';
@@ -28,23 +29,25 @@ export default class Config {
 
   private groups: RawGroup[] = [];
 
+  private configPath?: string;
+
   /**
    * Detect the path of the config.json file.
    * First, try it from the current file.
    * If that can't be found which is the case when installed using a symlink, try it from the cwd.
    */
   private static async detectPath(): Promise<string> {
-    let path = await findUp('config.json', { cwd: __dirname });
+    let configPath = await findUp('config.json', { cwd: __dirname });
 
-    if (!path) {
-      path = await findUp('config.json', { cwd: process.cwd() });
+    if (!configPath) {
+      configPath = await findUp('config.json', { cwd: process.cwd() });
     }
 
-    if (!path) {
+    if (!configPath) {
       throw new Error('Config file does not exist');
     }
 
-    return path;
+    return configPath;
   }
 
   /**
@@ -104,13 +107,13 @@ export default class Config {
   /**
    * Load the configuration from a file
    *
-   * @param path Path of the config.json file, will be determined automatically if omitted
+   * @param configPath Path of the config.json file, will be determined automatically if omitted
    */
-  public async loadFromFile(path?: string): Promise<void> {
-    const resolvedPath = path ?? (await Config.detectPath());
+  public async loadFromFile(configPath?: string): Promise<void> {
+    this.configPath = configPath ?? (await Config.detectPath());
 
     // load json file
-    const fileContent = await fs.readFile(resolvedPath);
+    const fileContent = await fs.readFile(this.configPath);
     const config = JSON.parse(fileContent.toString());
 
     // set config
@@ -155,5 +158,13 @@ export default class Config {
 
   public getGroups(): RawGroup[] {
     return this.groups;
+  }
+
+  public getProjectRoot(): string {
+    if (!this.configPath) {
+      throw new Error('getProjectRoot() can only be called on a loaded config instance');
+    }
+
+    return path.dirname(this.configPath);
   }
 }
