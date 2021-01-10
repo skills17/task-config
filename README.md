@@ -29,6 +29,8 @@ const config = new Config();
 await config.loadFromFile();
 ```
 
+To load the config synchronously, the additional method `loadFromFileSync()` is available.
+
 You can now access the configuration via the available getter methods:
 - `getId()`
 - `getType()`
@@ -36,6 +38,7 @@ You can now access the configuration via the available getter methods:
 - `getServe()`
 - `getPoints()`
 - `getGroups()`
+- `getProjectRoot()`
 
 Or directly create a new test run instance (from [`@skills17/test-result`](https://github.com/skills17/test-result)) where you can start recording the tests:
 

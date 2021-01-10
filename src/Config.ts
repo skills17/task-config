@@ -1,5 +1,5 @@
 import path from 'path';
-import { promises as fs } from 'fs';
+import fs, { promises as fsPromises } from 'fs';
 import findUp from 'find-up';
 import { Group, Override, Strategy, TestRun } from '@skills17/test-result';
 import Serve from './types/Serve';
@@ -41,6 +41,25 @@ export default class Config {
 
     if (!configPath) {
       configPath = await findUp('config.json', { cwd: process.cwd() });
+    }
+
+    if (!configPath) {
+      throw new Error('Config file does not exist');
+    }
+
+    return configPath;
+  }
+
+  /**
+   * Detect the path of the config.json file synchronously.
+   * First, try it from the current file.
+   * If that can't be found which is the case when installed using a symlink, try it from the cwd.
+   */
+  private static detectPathSync(): string {
+    let configPath = findUp.sync('config.json', { cwd: __dirname });
+
+    if (!configPath) {
+      configPath = findUp.sync('config.json', { cwd: process.cwd() });
     }
 
     if (!configPath) {
@@ -105,16 +124,12 @@ export default class Config {
   }
 
   /**
-   * Load the configuration from a file
+   * Initialize the class with values from the config file
    *
-   * @param configPath Path of the config.json file, will be determined automatically if omitted
+   * @param fileContent Config file content
    */
-  public async loadFromFile(configPath?: string): Promise<void> {
-    this.configPath = configPath ?? (await Config.detectPath());
-
-    // load json file
-    const fileContent = await fs.readFile(this.configPath);
-    const config = JSON.parse(fileContent.toString());
+  private initConfigFromFile(fileContent: string): void {
+    const config = JSON.parse(fileContent);
 
     // set config
     this.id = config.id;
@@ -123,6 +138,32 @@ export default class Config {
     this.serve = { ...this.serve, ...config.serve };
     this.points = { ...this.points, ...config.points };
     this.groups = config.groups ?? this.groups;
+  }
+
+  /**
+   * Load the configuration from a file
+   *
+   * @param configPath Path of the config.json file, will be determined automatically if omitted
+   */
+  public async loadFromFile(configPath?: string): Promise<void> {
+    this.configPath = configPath ?? (await Config.detectPath());
+
+    // load json file
+    const fileContent = await fsPromises.readFile(this.configPath);
+    this.initConfigFromFile(fileContent.toString());
+  }
+
+  /**
+   * Load the configuration from a file synchronously
+   *
+   * @param configPath Path of the config.json file, will be determined automatically if omitted
+   */
+  public loadFromFileSync(configPath?: string): void {
+    this.configPath = configPath ?? Config.detectPathSync();
+
+    // load json file
+    const fileContent = fs.readFileSync(this.configPath);
+    this.initConfigFromFile(fileContent.toString());
   }
 
   /**
