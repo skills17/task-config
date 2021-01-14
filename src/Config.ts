@@ -170,7 +170,7 @@ export default class Config {
   }
 
   /**
-   * Create a new test run instance from @skills17/test-run for the current config
+   * Create a new test run instance from @skills17/test-result for the current config
    */
   public createTestRun(): TestRun {
     const run = new TestRun();
