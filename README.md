@@ -71,6 +71,15 @@ All files that do not match will get reset before a test.
 
 The files can be specified by using globs.
 
+#### `tests: string[]`
+
+Default: `["./tests/**.(spec|test).(js|ts)"]`
+
+Some skills17 packages require all test files to be specified.
+If that is the case, it will be stated in the install instructions.
+
+The files can be specified by using globs.
+
 #### `database: Database`
 
 Default:
