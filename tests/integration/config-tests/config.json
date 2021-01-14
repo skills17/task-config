@@ -1,0 +1,6 @@
+{
+  "tests": [
+    "./src/tests/**",
+    "./test.html"
+  ]
+}

@@ -13,6 +13,8 @@ export default class Config {
 
   private source: string[] = ['./src/**'];
 
+  private tests: string[] = ['./tests/**.(spec|test).(js|ts)'];
+
   private serve: Serve = {
     enabled: false,
     port: 3000,
@@ -135,6 +137,7 @@ export default class Config {
     this.id = config.id;
     this.type = config.type;
     this.source = config.source ?? this.source;
+    this.tests = config.tests ?? this.tests;
     this.serve = { ...this.serve, ...config.serve };
     this.points = { ...this.points, ...config.points };
     this.groups = config.groups ?? this.groups;
@@ -187,6 +190,10 @@ export default class Config {
 
   public getSource(): string[] {
     return this.source;
+  }
+
+  public getTests(): string[] {
+    return this.tests;
   }
 
   public getServe(): Serve {
