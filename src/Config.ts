@@ -13,7 +13,7 @@ export default class Config {
 
   private source: string[] = ['./src/**'];
 
-  private tests: string[] = ['./tests/**.@(spec|test).@(js|ts)'];
+  private tests: string[] = ['./tests/**/*.@(spec|test).@(js|ts)'];
 
   private serve: Serve = {
     enabled: false,
