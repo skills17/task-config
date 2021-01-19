@@ -73,7 +73,7 @@ The files can be specified by using [minimatch globs](https://www.npmjs.com/pack
 
 #### `tests: string[]`
 
-Default: `["./tests/**.(spec|test).(js|ts)"]`
+Default: `["./tests/**/*.@(spec|test).@(js|ts)"]`
 
 Some skills17 packages require all test files to be specified.
 If that is the case, it will be stated in the install instructions.
