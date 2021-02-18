@@ -27,18 +27,18 @@ describe('config default points', () => {
     await config.loadFromFile(path.resolve(__dirname, 'config.json'));
 
     const run = config.createTestRun();
-    run.recordTest('AFoo', false, true); // 3 points
-    run.recordTest('ABar', false, true); // 3 points
-    run.recordTest('ABaz', false, false); // 0 points
-    run.recordTest('BFoo', false, true); // 0.5 points
-    run.recordTest('BBar', false, true); // 0.5 points
-    run.recordTest('BBaz', false, false); // 0 points
-    run.recordTest('CFoo', false, true); // 3 points
-    run.recordTest('CLessPoints', false, true); // 2 points
-    run.recordTest('CBaz', false, false); // 0 points
-    run.recordTest('DFoo', false, true); // 1 point
-    run.recordTest('DMorePoints', false, true); // 2 points
-    run.recordTest('DBaz', false, false); // 0 points
+    run.recordTest('AFoo', 'Foo', false, true); // 3 points
+    run.recordTest('ABar', 'Bar', false, true); // 3 points
+    run.recordTest('ABaz', 'Baz', false, false); // 0 points
+    run.recordTest('BFoo', 'Foo', false, true); // 0.5 points
+    run.recordTest('BBar', 'Bar', false, true); // 0.5 points
+    run.recordTest('BBaz', 'Baz', false, false); // 0 points
+    run.recordTest('CFoo', 'Foo', false, true); // 3 points
+    run.recordTest('CLessPoints', 'LessPoints', false, true); // 2 points
+    run.recordTest('CBaz', 'Baz', false, false); // 0 points
+    run.recordTest('DFoo', 'Foo', false, true); // 1 point
+    run.recordTest('DMorePoints', 'MorePoints', false, true); // 2 points
+    run.recordTest('DBaz', 'Baz', false, false); // 0 points
 
     expect(JSON.parse(JSON.stringify(run))).toStrictEqual({
       testResults: [
@@ -50,7 +50,7 @@ describe('config default points', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'AFoo',
+              name: 'Foo',
               points: 3,
               maxPoints: 3,
               successful: true,
@@ -58,7 +58,7 @@ describe('config default points', () => {
               manualCheck: false,
             },
             {
-              name: 'ABar',
+              name: 'Bar',
               points: 3,
               maxPoints: 3,
               successful: true,
@@ -66,7 +66,7 @@ describe('config default points', () => {
               manualCheck: false,
             },
             {
-              name: 'ABaz',
+              name: 'Baz',
               points: 0,
               maxPoints: 3,
               successful: false,
@@ -83,7 +83,7 @@ describe('config default points', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'BFoo',
+              name: 'Foo',
               points: 0.5,
               maxPoints: 0.5,
               successful: true,
@@ -91,7 +91,7 @@ describe('config default points', () => {
               manualCheck: false,
             },
             {
-              name: 'BBar',
+              name: 'Bar',
               points: 0.5,
               maxPoints: 0.5,
               successful: true,
@@ -99,7 +99,7 @@ describe('config default points', () => {
               manualCheck: false,
             },
             {
-              name: 'BBaz',
+              name: 'Baz',
               points: 0,
               maxPoints: 0.5,
               successful: false,
@@ -116,7 +116,7 @@ describe('config default points', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'CFoo',
+              name: 'Foo',
               points: 3,
               maxPoints: 3,
               successful: true,
@@ -124,7 +124,7 @@ describe('config default points', () => {
               manualCheck: false,
             },
             {
-              name: 'CLessPoints',
+              name: 'LessPoints',
               points: 2,
               maxPoints: 2,
               successful: true,
@@ -132,7 +132,7 @@ describe('config default points', () => {
               manualCheck: false,
             },
             {
-              name: 'CBaz',
+              name: 'Baz',
               points: 0,
               maxPoints: 3,
               successful: false,
@@ -149,7 +149,7 @@ describe('config default points', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'DFoo',
+              name: 'Foo',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -157,7 +157,7 @@ describe('config default points', () => {
               manualCheck: false,
             },
             {
-              name: 'DMorePoints',
+              name: 'MorePoints',
               points: 2,
               maxPoints: 2,
               successful: true,
@@ -165,7 +165,7 @@ describe('config default points', () => {
               manualCheck: false,
             },
             {
-              name: 'DBaz',
+              name: 'Baz',
               points: 0,
               maxPoints: 1,
               successful: false,

@@ -14,7 +14,7 @@
       "match": "C.+",
       "tests": [
         {
-          "match": "CLessPoints",
+          "match": "LessPoints",
           "points": 2
         }
       ]
@@ -24,7 +24,7 @@
       "defaultPoints": 1,
       "tests": [
         {
-          "match": "DMorePoints",
+          "match": "MorePoints",
           "points": 2
         }
       ]

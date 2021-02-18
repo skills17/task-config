@@ -27,9 +27,9 @@ describe('config display name', () => {
     await config.loadFromFile(path.resolve(__dirname, 'config.json'));
 
     const run = config.createTestRun();
-    run.recordTest('AFoo', false, true);
-    run.recordTest('BFoo', false, true);
-    run.recordTest('CFoo', false, true);
+    run.recordTest('AFoo', 'Foo', false, true);
+    run.recordTest('BFoo', 'Foo', false, true);
+    run.recordTest('CFoo', 'Foo', false, true);
 
     expect(JSON.parse(JSON.stringify(run))).toStrictEqual({
       testResults: [
@@ -41,7 +41,7 @@ describe('config display name', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'AFoo',
+              name: 'Foo',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -58,7 +58,7 @@ describe('config display name', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'BFoo',
+              name: 'Foo',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -75,7 +75,7 @@ describe('config display name', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'CFoo',
+              name: 'Foo',
               points: 1,
               maxPoints: 1,
               successful: true,

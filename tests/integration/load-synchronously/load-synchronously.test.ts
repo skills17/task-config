@@ -27,15 +27,15 @@ describe('load synchronously', () => {
     config.loadFromFileSync(path.resolve(__dirname, 'config.json'));
 
     const run = config.createTestRun();
-    run.recordTest('AFoo', false, true);
-    run.recordTest('BFoo', false, true);
-    run.recordTest('BBar', false, true);
-    run.recordTest('BBaz', false, false);
-    run.recordTest('CFoo', false, true);
-    run.recordTest('CBar', false, true);
-    run.recordTest('DFoo', false, false);
-    run.recordTest('EFoo', false, false);
-    run.recordTest('EBar', false, false);
+    run.recordTest('AFoo', 'Foo', false, true);
+    run.recordTest('BFoo', 'Foo', false, true);
+    run.recordTest('BBar', 'Bar', false, true);
+    run.recordTest('BBaz', 'Baz', false, false);
+    run.recordTest('CFoo', 'Foo', false, true);
+    run.recordTest('CBar', 'Bar', false, true);
+    run.recordTest('DFoo', 'Foo', false, false);
+    run.recordTest('EFoo', 'Foo', false, false);
+    run.recordTest('EBar', 'Bar', false, false);
 
     expect(JSON.parse(JSON.stringify(run))).toStrictEqual({
       testResults: [
@@ -47,7 +47,7 @@ describe('load synchronously', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'AFoo',
+              name: 'Foo',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -64,7 +64,7 @@ describe('load synchronously', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'BFoo',
+              name: 'Foo',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -72,7 +72,7 @@ describe('load synchronously', () => {
               manualCheck: false,
             },
             {
-              name: 'BBar',
+              name: 'Bar',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -80,7 +80,7 @@ describe('load synchronously', () => {
               manualCheck: false,
             },
             {
-              name: 'BBaz',
+              name: 'Baz',
               points: 0,
               maxPoints: 1,
               successful: false,
@@ -97,7 +97,7 @@ describe('load synchronously', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'CFoo',
+              name: 'Foo',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -105,7 +105,7 @@ describe('load synchronously', () => {
               manualCheck: false,
             },
             {
-              name: 'CBar',
+              name: 'Bar',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -122,7 +122,7 @@ describe('load synchronously', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'DFoo',
+              name: 'Foo',
               points: 0,
               maxPoints: 1,
               successful: false,
@@ -139,7 +139,7 @@ describe('load synchronously', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'EFoo',
+              name: 'Foo',
               points: 0,
               maxPoints: 1,
               successful: false,
@@ -147,7 +147,7 @@ describe('load synchronously', () => {
               manualCheck: false,
             },
             {
-              name: 'EBar',
+              name: 'Bar',
               points: 0,
               maxPoints: 1,
               successful: false,

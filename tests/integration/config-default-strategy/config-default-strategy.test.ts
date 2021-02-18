@@ -27,12 +27,12 @@ describe('config default strategy', () => {
     await config.loadFromFile(path.resolve(__dirname, 'config.json'));
 
     const run = config.createTestRun();
-    run.recordTest('AFoo', false, true);
-    run.recordTest('ABar', false, true);
-    run.recordTest('ABaz', false, false);
-    run.recordTest('BFoo', false, true);
-    run.recordTest('BBar', false, true);
-    run.recordTest('BBaz', false, false);
+    run.recordTest('AFoo', 'Foo', false, true);
+    run.recordTest('ABar', 'Bar', false, true);
+    run.recordTest('ABaz', 'Baz', false, false);
+    run.recordTest('BFoo', 'Foo', false, true);
+    run.recordTest('BBar', 'Bar', false, true);
+    run.recordTest('BBaz', 'Baz', false, false);
 
     expect(JSON.parse(JSON.stringify(run))).toStrictEqual({
       testResults: [
@@ -44,7 +44,7 @@ describe('config default strategy', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'AFoo',
+              name: 'Foo',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -52,7 +52,7 @@ describe('config default strategy', () => {
               manualCheck: false,
             },
             {
-              name: 'ABar',
+              name: 'Bar',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -60,7 +60,7 @@ describe('config default strategy', () => {
               manualCheck: false,
             },
             {
-              name: 'ABaz',
+              name: 'Baz',
               points: 0,
               maxPoints: 1,
               successful: false,
@@ -77,7 +77,7 @@ describe('config default strategy', () => {
           manualCheck: false,
           tests: [
             {
-              name: 'BFoo',
+              name: 'Foo',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -85,7 +85,7 @@ describe('config default strategy', () => {
               manualCheck: false,
             },
             {
-              name: 'BBar',
+              name: 'Bar',
               points: 1,
               maxPoints: 1,
               successful: true,
@@ -93,7 +93,7 @@ describe('config default strategy', () => {
               manualCheck: false,
             },
             {
-              name: 'BBaz',
+              name: 'Baz',
               points: 0,
               maxPoints: 1,
               successful: false,

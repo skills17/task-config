@@ -46,7 +46,7 @@ Or directly create a new test run instance (from [`@skills17/test-result`](https
 const run = config.createTestRun();
 
 // start recording tests
-run.recordTest('CountriesIndexAll', false, true);
+run.recordTest('Countries > IndexAll', 'IndexAll', false, true);
 ```
 
 ## Configuration
