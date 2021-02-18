@@ -39,6 +39,7 @@ You can now access the configuration via the available getter methods:
 - `getPoints()`
 - `getGroups()`
 - `getProjectRoot()`
+- `isLocalHistoryEnabled()`
 
 Or directly create a new test run instance (from [`@skills17/test-result`](https://github.com/skills17/test-result)) where you can start recording the tests:
 
@@ -114,6 +115,13 @@ Default:
 Some integration tests require that files are accessible over an URL.
 If this feature is enabled, the files or directories specified in the `mapping` property will be served on the defined endpoint.
 The key specifies the URL path and the value the local file path.
+
+#### `localHistory: boolean`
+
+Default: `false`
+
+If true, every executed test run will be saved in JSON locally in a `.history` folder.
+This later allows a performance analysis over time.
 
 #### `points: Points`
 
@@ -205,6 +213,7 @@ But it shows how a full `config.json` can look like and what settings are availa
       "/": "./src"
     }
   },
+  "localHistory": false,
   "points": {
     "defaultPoints": 1,
     "strategy": "add"

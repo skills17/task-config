@@ -20,6 +20,7 @@ describe('config minimal', () => {
       defaultPoints: 1.0,
       strategy: Strategy.Add,
     });
+    expect(config.isLocalHistoryEnabled()).toEqual(false);
   });
 
   it('creates a new test run', async () => {

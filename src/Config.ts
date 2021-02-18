@@ -15,6 +15,8 @@ export default class Config {
 
   private tests: string[] = ['./tests/**/*.@(spec|test).@(js|ts)'];
 
+  private localHistory = false;
+
   private serve: Serve = {
     enabled: false,
     port: 3000,
@@ -138,6 +140,7 @@ export default class Config {
     this.type = config.type;
     this.source = config.source ?? this.source;
     this.tests = config.tests ?? this.tests;
+    this.localHistory = config.localHistory ?? this.localHistory;
     this.serve = { ...this.serve, ...config.serve };
     this.points = { ...this.points, ...config.points };
     this.groups = config.groups ?? this.groups;
@@ -206,6 +209,10 @@ export default class Config {
 
   public getGroups(): RawGroup[] {
     return this.groups;
+  }
+
+  public isLocalHistoryEnabled(): boolean {
+    return this.localHistory;
   }
 
   public getProjectRoot(): string {
