@@ -1,6 +1,6 @@
 import path from 'path';
 import { Strategy } from '@skills17/test-result';
-import Config from '../../../src/Config';
+import Config from '../../../src';
 
 describe('config display name', () => {
   it('loads the config file', async () => {

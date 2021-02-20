@@ -1,5 +1,5 @@
 import path from 'path';
-import Config from '../../../src/Config';
+import Config from '../../../src';
 
 describe('config tests', () => {
   it('loads the config file', async () => {

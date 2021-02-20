@@ -6,6 +6,7 @@ Parses and validates task config files.
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Browser](#browser)
 - [Configuration](#configuration)
 - [License](#license)
 
@@ -49,6 +50,25 @@ const run = config.createTestRun();
 // start recording tests
 run.recordTest('Countries > IndexAll', 'IndexAll', false, true);
 ```
+
+### Browser
+
+It is also possible to use this library in a browser.
+Webpack and other bundlers should automatically pick the correct files.
+If you are not using a bundler, make sure to use the `lib/index.browser.js` file.
+
+Since the browser does not have access to the filesytem, it cannot load the `config.json` automatically.
+Instead, you have to pass the configuration object directly to the load method:
+
+```typescript
+import Config from '@skills17/task-config';
+
+const config = new Config();
+await config.load({ points: { defaultPoints: 2 }, groups: [ /* ... */ ] });
+```
+
+From then on, the same methods can be used as within a node environment, except the `getProjectRoot()`
+method is not available.
 
 ## Configuration
 

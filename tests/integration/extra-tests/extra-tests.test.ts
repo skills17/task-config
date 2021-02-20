@@ -1,5 +1,5 @@
 import path from 'path';
-import Config from '../../../src/Config';
+import Config from '../../../src';
 
 describe('extra tests', () => {
   it('creates a new test run', async () => {

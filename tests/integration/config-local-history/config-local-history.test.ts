@@ -1,5 +1,5 @@
 import path from 'path';
-import Config from '../../../src/Config';
+import Config from '../../../src';
 
 describe('config local history', () => {
   it('loads the config file', async () => {
