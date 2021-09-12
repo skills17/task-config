@@ -14,6 +14,8 @@ export default class Config {
 
   private localHistory = false;
 
+  private showPoints = true;
+
   private serve: Serve = {
     enabled: false,
     port: 3000,
@@ -96,6 +98,7 @@ export default class Config {
     this.source = config.source ?? this.source;
     this.tests = config.tests ?? this.tests;
     this.localHistory = config.localHistory ?? this.localHistory;
+    this.showPoints = config.showPoints ?? this.showPoints;
     this.serve = { ...this.serve, ...config.serve };
     this.points = { ...this.points, ...config.points };
     this.groups = config.groups ?? this.groups;
@@ -142,5 +145,9 @@ export default class Config {
 
   public isLocalHistoryEnabled(): boolean {
     return this.localHistory;
+  }
+
+  public arePointsShown(): boolean {
+    return this.showPoints;
   }
 }
