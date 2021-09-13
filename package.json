@@ -1,6 +1,6 @@
 {
   "name": "@skills17/task-config",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Parses and validates a task configuration file.",
   "main": "lib/index.js",
   "browser": "lib/index.browser.js",
