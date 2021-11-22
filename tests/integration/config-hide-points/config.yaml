@@ -1,0 +1,3 @@
+showPoints: false
+groups:
+- match: A.+

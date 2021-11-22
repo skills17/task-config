@@ -18,7 +18,7 @@ npm install @skills17/task-config
 
 ## Usage
 
-Create a `config.json` file for your task in the root folder of the task.
+Create a `config.yaml` file for your task in the root folder of the task.
 See the [configuration](#configuration) section below for a detailed overview of all possible configuration values.
 
 Then, create a new config instance and load the configuration file:
@@ -58,7 +58,7 @@ It is also possible to use this library in a browser.
 Webpack and other bundlers should automatically pick the correct files.
 If you are not using a bundler, make sure to use the `lib/index.browser.js` file.
 
-Since the browser does not have access to the filesytem, it cannot load the `config.json` automatically.
+Since the browser does not have access to the filesytem, it cannot load the `config.yaml` automatically.
 Instead, you have to pass the configuration object directly to the load method:
 
 ```typescript
@@ -73,7 +73,7 @@ method is not available.
 
 ## Configuration
 
-The following properties are available and can be set in the `config.json` file.
+The following properties are available and can be set in the `config.yaml` file.
 
 #### `id: string`
 
@@ -105,15 +105,14 @@ The files can be specified by using [minimatch globs](https://www.npmjs.com/pack
 #### `database: Database`
 
 Default:
-```json
-{
-  "enabled": false,
-  "dump": "./database.sql",
-  "name": "skills17",
-  "user": "root",
-  "password": "",
-  "host": "127.0.0.1"
-},
+```yaml
+database:
+  enabled: false
+  dump: ./database.sql
+  name: skills17
+  user: root
+  password: ''
+  host: 127.0.0.1
 ```
 
 Defines if a database is used by the tests and if that is the case, which one.
@@ -122,15 +121,13 @@ The dump file specifies the location of a valid SQL Dump that will get automatic
 #### `serve: Serve`
 
 Default:
-```json
-{
-  "enabled": false,
-  "port": 3000,
-  "bind": "127.0.0.1",
-  "mapping": {
-    "/": "./src"
-  }
-}
+```yaml
+serve:
+  enabled: false
+  port: 3000
+  bind: 127.0.0.1
+  mapping:
+    /: ./src
 ```
 
 Some integration tests require that files are accessible over an URL.
@@ -154,11 +151,10 @@ For JSON outputs, they will still be available.
 #### `points: Points`
 
 Default:
-```json
-{
-  "defaultPoints": 1,
-  "strategy": "add"
-}
+```yaml
+points:
+  defaultPoints: 1
+  strategy: add
 ```
 
 Those settings define how many points a test will award by default and which strategy will be used.
@@ -173,101 +169,82 @@ A core concept is test groups.
 You usually don't want to test everything for one criterion in one test function but instead split it into multiple ones for a cleaner test class and a better overview.
 
 Each test group can have the following configuration:
-```json5
-{
-  // A regex to match tests of this group. For JS, groups are determined
-  // by `describe` statements, for PHP, it is specified as a test method prefix.
-  "match": "CountriesIndex.+",
+```yaml
+groups:
+  # A regex to match tests of this group. For JS, groups are determined
+  # by `describe` statements, for PHP, it is specified as a test method prefix.
+  match: CountriesIndex.+
 
-  // An optional display name will be used in all outputs.
-  "displayName": "CountriesController::index",
+  # An optional display name will be used in all outputs.
+  displayName: CountriesController::index
 
-  // Optionally sets the default points tests will award in this group.
-  // Only needed when overwriting the global default value.
-  "defaultPoints": 1,
+  # Optionally sets the default points tests will award in this group.
+  # Only needed when overwriting the global default value.
+  defaultPoints: 1
 
-  // Optionally sets the strategy used in this group.
-  // Only needed when overwriting the global default value.
-  "strategy": "deduct",
+  # Optionally sets the strategy used in this group.
+  # Only needed when overwriting the global default value.
+  strategy: deduct
 
-  // Optionally sets the maximum number of points that can be scored in this group.
-  // This can only be set when the strategy "deduct" is used and the maximum points
-  // should not equal the sum of all tests.
-  "maxPoints": 3,
+  # Optionally sets the maximum number of points that can be scored in this group.
+  # This can only be set when the strategy "deduct" is used and the maximum points
+  # should not equal the sum of all tests.
+  maxPoints: 3
 
-  // Optionally define overrides for single tests.
-  "tests": [
-    {
-      // A regex to match the test inside this group.
-      // If the default values are okay for a test, it does not need to be specified here.
-      "match": "CountriesIndexJson",
+  # Optionally define overrides for single tests.
+  tests:
+    # A regex to match the test inside this group.
+    # If the default values are okay for a test, it does not need to be specified here.
+  - match: CountriesIndexJson
 
-      // Optionally specify points per test if they should be different from the default points.
-      "points": 0,
+    # Optionally specify points per test if they should be different from the default points.
+    points: 0
 
-      // Optionally set this as a required test.
-      // If a required test does not pass, the whole group will award 0 points.
-      "required": true
-    }
-  ]
-}
+    # Optionally set this as a required test.
+    # If a required test does not pass, the whole group will award 0 points.
+    required: true
 ```
 
 ### Full example
 
 Many of the values in this example are default values and can be left out.
-But it shows how a full `config.json` can look like and what settings are available.
+But it shows how a full `config.yaml` can look like and what settings are available.
 
-```json
-{
-  "id": "js-task-1",
-  "type": "js",
-  "source": [
-    "./src/**"
-  ],
-  "database": {
-    "enabled": true,
-    "dump": "./database.sql",
-    "name": "skills17",
-    "user": "root",
-    "password": "",
-    "host": "127.0.0.1"
-  },
-  "serve": {
-    "enabled": true,
-    "port": 3000,
-    "bind": "127.0.0.1",
-    "mapping": {
-      "/": "./src"
-    }
-  },
-  "localHistory": false,
-  "showPoints": true,
-  "points": {
-    "defaultPoints": 1,
-    "strategy": "add"
-  },
-  "groups": [
-    {
-      "match": "CountriesIndex.+",
-      "displayName": "CountriesController::index",
-      "defaultPoints": 1,
-      "strategy": "deduct",
-      "maxPoints": 2,
-      "tests": [
-        {
-          "match": "CountriesIndexJson",
-          "points": 0,
-          "required": true
-        },
-        {
-          "match": "CountriesIndexSearch",
-          "points": 2
-        }
-      ]
-    }
-  ]
-}
+```yaml
+id: js-task-1
+type: js
+source:
+- ./src/**
+database:
+  enabled: true
+  dump: ./database.sql
+  name: skills17
+  user: root
+  password: ''
+  host: 127.0.0.1
+serve:
+  enabled: true
+  port: 3000
+  bind: 127.0.0.1
+  mapping:
+    /: ./src
+localHistory: false
+showPoints: true
+points:
+  defaultPoints: 1
+  strategy: add
+groups:
+- match: CountriesIndex.+
+  displayName: CountriesController::index
+  defaultPoints: 1
+  strategy: deduct
+  maxPoints: 2
+  tests:
+  - match: CountriesIndexJson
+    points: 0
+    required: true
+  - match: CountriesIndexSearch
+    points: 2
 ```
 
 ## License

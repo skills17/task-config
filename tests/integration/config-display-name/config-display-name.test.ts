@@ -5,7 +5,7 @@ import Config from '../../../src';
 describe('config display name', () => {
   it('loads the config file', async () => {
     const config = new Config();
-    await config.loadFromFile(path.resolve(__dirname, 'config.json'));
+    await config.loadFromFile(path.resolve(__dirname, 'config.yaml'));
 
     expect(config.getSource()).toStrictEqual(['./src/**']);
     expect(config.getServe()).toStrictEqual({
@@ -24,7 +24,7 @@ describe('config display name', () => {
 
   it('creates a new test run', async () => {
     const config = new Config();
-    await config.loadFromFile(path.resolve(__dirname, 'config.json'));
+    await config.loadFromFile(path.resolve(__dirname, 'config.yaml'));
 
     const run = config.createTestRun();
     run.recordTest('AFoo', 'Foo', false, true);

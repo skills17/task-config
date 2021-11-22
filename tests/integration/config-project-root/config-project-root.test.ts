@@ -4,7 +4,7 @@ import Config from '../../../src';
 describe('config project root', () => {
   it('loads the config file', async () => {
     const config = new Config();
-    await config.loadFromFile(path.resolve(__dirname, 'config.json'));
+    await config.loadFromFile(path.resolve(__dirname, 'config.yaml'));
 
     expect(config.getProjectRoot()).toEqual(__dirname);
   });

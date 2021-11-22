@@ -33,7 +33,7 @@ export default class Config {
   private groups: RawGroup[] = [];
 
   /**
-   * Load groups from the config.json file and create instances of @skills17/test-result
+   * Load groups from the config.yaml file and create instances of @skills17/test-result
    *
    * @param groups Groups
    */
@@ -41,7 +41,7 @@ export default class Config {
     return groups.map((groupConfig: RawGroup, groupIndex) => {
       if (!groupConfig.match) {
         throw new Error(
-          `config.json validation error: group #${groupIndex} does not contain a 'match' property`,
+          `config.yaml validation error: group #${groupIndex} does not contain a 'match' property`,
         );
       }
 
@@ -56,7 +56,7 @@ export default class Config {
 
       if (typeof groupConfig.maxPoints !== 'undefined' && strategy !== Strategy.Deduct) {
         throw new Error(
-          `config.json validation error: property 'maxPoints' can only be set for strategy 'deduct'. Found in group #${groupIndex} (${groupConfig.match})`,
+          `config.yaml validation error: property 'maxPoints' can only be set for strategy 'deduct'. Found in group #${groupIndex} (${groupConfig.match})`,
         );
       }
 
@@ -74,7 +74,7 @@ export default class Config {
         groupConfig.tests.forEach((testConfig, testIndex) => {
           if (!testConfig.match) {
             throw new Error(
-              `config.json validation error: test #${testIndex} in group #${groupIndex} (${groupConfig.match}) does not contain a 'match' property`,
+              `config.yaml validation error: test #${testIndex} in group #${groupIndex} (${groupConfig.match}) does not contain a 'match' property`,
             );
           }
 

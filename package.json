@@ -34,6 +34,7 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",
     "@types/jest": "^26.0.19",
+    "@types/js-yaml": "^4.0.5",
     "@typescript-eslint/eslint-plugin": "^4.12.0",
     "@typescript-eslint/parser": "^4.12.0",
     "babel-jest": "^26.6.3",
@@ -48,6 +49,7 @@
   },
   "dependencies": {
     "@skills17/test-result": "^2.0.4",
-    "find-up": "^5.0.0"
+    "find-up": "^5.0.0",
+    "js-yaml": "^4.1.0"
   }
 }

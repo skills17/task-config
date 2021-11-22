@@ -4,7 +4,7 @@ import Config from '../../../src';
 describe('config serve', () => {
   it('loads the config file', async () => {
     const config = new Config();
-    await config.loadFromFile(path.resolve(__dirname, 'config.json'));
+    await config.loadFromFile(path.resolve(__dirname, 'config.yaml'));
 
     expect(config.getServe()).toStrictEqual({
       enabled: true,

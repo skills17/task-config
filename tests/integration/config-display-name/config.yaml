@@ -1,0 +1,6 @@
+groups:
+- match: A.+
+- match: B.+
+  displayName: BGroup::foo
+- match: C.+
+  displayName: Last group

@@ -1,0 +1,7 @@
+serve:
+  enabled: true
+  port: 4000
+  bind:
+  mapping:
+    /: ./example
+    /assets: ./lib

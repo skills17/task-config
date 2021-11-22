@@ -4,7 +4,7 @@ import Config from '../../../src';
 describe('extra tests', () => {
   it('creates a new test run', async () => {
     const config = new Config();
-    await config.loadFromFile(path.resolve(__dirname, 'config.json'));
+    await config.loadFromFile(path.resolve(__dirname, 'config.yaml'));
 
     const run = config.createTestRun();
 
