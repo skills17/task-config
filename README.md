@@ -34,7 +34,6 @@ To load the config synchronously, the additional method `loadFromFileSync()` is 
 
 You can now access the configuration via the available getter methods:
 - `getId()`
-- `getType()`
 - `getSource()`
 - `getServe()`
 - `getPoints()`
@@ -79,11 +78,6 @@ The following properties are available and can be set in the `config.yaml` file.
 #### `id: string`
 
 Uniquely identifies the task within one championship.
-
-#### `type: string`
-
-Defines the task type so they can later be grouped.
-For example, task types can be their programming language (`js`, `php`, ...).
 
 #### `source: string[]`
 

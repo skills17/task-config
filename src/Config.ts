@@ -6,8 +6,6 @@ import RawGroup from './types/RawGroup';
 export default class Config {
   private id?: string;
 
-  private type?: string;
-
   private source: string[] = ['./src/**'];
 
   private tests: string[] = ['./tests/**/*.spec.*', './tests/**/*.test.*'];
@@ -96,7 +94,6 @@ export default class Config {
   public load(config: any): void { // eslint-disable-line
     // set config
     this.id = config.id;
-    this.type = config.type;
     this.source = config.source ?? this.source;
     this.tests = config.tests ?? this.tests;
     this.localHistory = config.localHistory ?? this.localHistory;
@@ -120,10 +117,6 @@ export default class Config {
 
   public getId(): string | undefined {
     return this.id;
-  }
-
-  public getType(): string | undefined {
-    return this.type;
   }
 
   public getSource(): string[] {

@@ -7,6 +7,5 @@ describe('config meta', () => {
     await config.loadFromFile(path.resolve(__dirname, 'config.yaml'));
 
     expect(config.getId()).toEqual('js-task-1');
-    expect(config.getType()).toEqual('js');
   });
 });
