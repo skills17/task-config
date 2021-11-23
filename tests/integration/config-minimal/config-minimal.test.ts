@@ -8,6 +8,7 @@ describe('config minimal', () => {
     await config.loadFromFile(path.resolve(__dirname, 'config.yaml'));
 
     expect(config.getSource()).toStrictEqual(['./src/**']);
+    expect(config.getTests()).toStrictEqual(['./tests/**/*.spec.*', './tests/**/*.test.*']);
     expect(config.getServe()).toStrictEqual({
       enabled: false,
       port: 3000,

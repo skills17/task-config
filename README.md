@@ -92,16 +92,16 @@ Default: `["./src/**"]`
 Specifies all source files the competitors are allowed to modify.
 All files that do not match will get reset before a test.
 
-The files can be specified by using [minimatch globs](https://www.npmjs.com/package/minimatch).
+The files can be specified by using globs.
 
 #### `tests: string[]`
 
-Default: `["./tests/**/*.@(spec|test).@(js|ts)"]`
+Default: `["./tests/**/*.spec.*", "./tests/**/*.test.*"]`
 
 Some skills17 packages require all test files to be specified.
 If that is the case, it will be stated in the install instructions.
 
-The files can be specified by using [minimatch globs](https://www.npmjs.com/package/minimatch).
+The files can be specified by using globs.
 
 #### `database: Database`
 
@@ -222,6 +222,9 @@ id: js-task-1
 type: js
 source:
 - ./src/**
+tests:
+- ./tests/**/*.spec.*
+- ./tests/**/*.test.*
 database:
   enabled: true
   dump: ./database.sql

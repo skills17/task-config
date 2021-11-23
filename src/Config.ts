@@ -10,7 +10,7 @@ export default class Config {
 
   private source: string[] = ['./src/**'];
 
-  private tests: string[] = ['./tests/**/*.@(spec|test).@(js|ts)'];
+  private tests: string[] = ['./tests/**/*.spec.*', './tests/**/*.test.*'];
 
   private localHistory = false;
 
