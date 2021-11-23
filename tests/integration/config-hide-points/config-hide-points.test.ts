@@ -15,6 +15,6 @@ describe('config hide points', () => {
         '/': './src',
       },
     });
-    expect(config.arePointsShown()).toEqual(false);
+    expect(config.arePointsDisplayed()).toEqual(false);
   });
 });

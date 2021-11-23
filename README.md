@@ -41,7 +41,7 @@ You can now access the configuration via the available getter methods:
 - `getGroups()`
 - `getProjectRoot()`
 - `isLocalHistoryEnabled()`
-- `arePointsShown()`
+- `arePointsDisplayed()`
 
 Or directly create a new test run instance (from [`@skills17/test-result`](https://github.com/skills17/test-result)) where you can start recording the tests:
 
@@ -141,11 +141,11 @@ Default: `false`
 If true, every executed test run will be saved in JSON locally in a `.history` folder.
 This later allows a performance analysis over time.
 
-#### `showPoints: boolean`
+#### `displayPoints: boolean`
 
 Default: `true`
 
-If false, points will not be shown in the normal output.
+If false, points will not be displayed in the normal output.
 For JSON outputs, they will still be available.
 
 #### `points: Points`
@@ -229,7 +229,7 @@ serve:
   mapping:
     /: ./src
 localHistory: false
-showPoints: true
+displayPoints: true
 points:
   defaultPoints: 1
   strategy: add
