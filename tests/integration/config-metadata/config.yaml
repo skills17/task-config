@@ -1,0 +1,6 @@
+id: metadata-test
+metadata:
+  foo: bar
+  url: http://localhost/tests.html
+groups:
+- match: A.+

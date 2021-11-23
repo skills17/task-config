@@ -40,6 +40,7 @@ You can now access the configuration via the available getter methods:
 - `getPoints()`
 - `getGroups()`
 - `getProjectRoot()`
+- `getMetadata()`
 - `isLocalHistoryEnabled()`
 - `arePointsDisplayed()`
 
@@ -204,6 +205,12 @@ groups:
     # If a required test does not pass, the whole group will award 0 points.
     required: true
 ```
+
+#### `metadata: Record<string, string>`
+
+Default: `{}`
+
+Can contain any key and value pair which can be used lated in other libraries.
 
 ### Full example
 

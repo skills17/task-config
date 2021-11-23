@@ -22,6 +22,7 @@ describe('config minimal', () => {
     });
     expect(config.isLocalHistoryEnabled()).toEqual(false);
     expect(config.arePointsDisplayed()).toEqual(true);
+    expect(config.getMetadata()).toStrictEqual({});
   });
 
   it('creates a new test run', async () => {

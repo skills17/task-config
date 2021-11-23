@@ -32,6 +32,8 @@ export default class Config {
 
   private groups: RawGroup[] = [];
 
+  private metadata: Record<string, string> = {};
+
   /**
    * Load groups from the config.yaml file and create instances of @skills17/test-result
    *
@@ -102,6 +104,7 @@ export default class Config {
     this.serve = { ...this.serve, ...config.serve };
     this.points = { ...this.points, ...config.points };
     this.groups = config.groups ?? this.groups;
+    this.metadata = config.metadata ?? this.metadata;
   }
 
   /**
@@ -141,6 +144,10 @@ export default class Config {
 
   public getGroups(): RawGroup[] {
     return this.groups;
+  }
+
+  public getMetadata(): Record<string, string> {
+    return this.metadata;
   }
 
   public isLocalHistoryEnabled(): boolean {
