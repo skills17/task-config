@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "browser": "lib/index.browser.js",
   "files": [
-    "lib"
+    "lib",
+    "config.schema.yaml"
   ],
   "scripts": {
     "build": "npm run build:js && npm run build:types",
@@ -49,6 +50,7 @@
   },
   "dependencies": {
     "@skills17/test-result": "^2.0.4",
+    "ajv": "^8.8.2",
     "find-up": "^5.0.0",
     "js-yaml": "^4.1.0"
   }

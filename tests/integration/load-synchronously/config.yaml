@@ -1,3 +1,4 @@
+id: load-synchronously
 groups:
 - match: A.+
 - match: B.+

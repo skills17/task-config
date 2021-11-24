@@ -1,3 +1,4 @@
+id: config-source
 source:
 - ./src/main.js
 - ./src/main.css

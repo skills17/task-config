@@ -1,2 +1,3 @@
+id: config-project-root
 groups:
 - match: A.+

@@ -213,7 +213,6 @@ But it shows how a full `config.yaml` can look like and what settings are availa
 
 ```yaml
 id: js-task-1
-type: js
 source:
 - ./src/**
 tests:

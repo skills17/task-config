@@ -9,6 +9,7 @@ describe('config metadata', () => {
     expect(config.getMetadata()).toStrictEqual({
       foo: 'bar',
       url: 'http://localhost/tests.html',
+      number: 4,
     });
   });
 });

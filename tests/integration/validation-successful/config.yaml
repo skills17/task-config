@@ -1,0 +1,39 @@
+id: js-task-1
+metadata:
+  type: js
+  subtasks: 4
+source:
+- ./src/**
+tests:
+- ./tests/**/*.spec.*
+- ./tests/**/*.test.*
+database:
+  enabled: true
+  dump: ./database.sql
+  name: skills17
+  user: root
+  password: ''
+  host: 127.0.0.1
+serve:
+  enabled: true
+  port: 3000
+  bind: 127.0.0.1
+  mapping:
+    /: ./src
+localHistory: false
+displayPoints: true
+points:
+  defaultPoints: 1
+  strategy: add
+groups:
+- match: CountriesIndex.+
+  displayName: CountriesController::index
+  defaultPoints: 1
+  strategy: deduct
+  maxPoints: 2
+  tests:
+  - match: CountriesIndexJson
+    points: 0
+    required: true
+  - match: CountriesIndexSearch
+    points: 2

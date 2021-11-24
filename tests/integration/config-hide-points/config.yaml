@@ -1,3 +1,4 @@
+id: config-hide-points
 displayPoints: false
 groups:
 - match: A.+

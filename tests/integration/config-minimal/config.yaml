@@ -1,3 +1,4 @@
+id: config-minimal
 groups:
 - match: A.+
 - match: B.+

@@ -1,3 +1,4 @@
+id: extra-tests
 groups:
 - match: A.+
 - match: B.+

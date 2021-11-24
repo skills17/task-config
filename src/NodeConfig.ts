@@ -2,6 +2,7 @@ import path from 'path';
 import fs, { promises as fsPromises } from 'fs';
 import findUp from 'find-up';
 import yaml from 'js-yaml';
+import Ajv, { AnySchema } from 'ajv';
 import Config from './Config';
 
 export default class NodeConfig extends Config {
@@ -55,7 +56,10 @@ export default class NodeConfig extends Config {
 
     // load yaml file
     const fileContent = await fsPromises.readFile(this.configPath);
-    this.load(yaml.load(fileContent.toString()));
+    const config = yaml.load(fileContent.toString());
+
+    this.validateSchema(config);
+    this.load(config);
   }
 
   /**
@@ -68,7 +72,10 @@ export default class NodeConfig extends Config {
 
     // load yaml file
     const fileContent = fs.readFileSync(this.configPath);
-    this.load(yaml.load(fileContent.toString()));
+    const config = yaml.load(fileContent.toString());
+
+    this.validateSchema(config);
+    this.load(config);
   }
 
   public getProjectRoot(): string {
@@ -77,5 +84,28 @@ export default class NodeConfig extends Config {
     }
 
     return path.dirname(this.configPath);
+  }
+
+  /**
+   * Validate the config against the schema.
+   *
+   * @param config Config object
+   */
+  private validateSchema(config: any): void { // eslint-disable-line
+    const schemaPath = path.join(__dirname, '..', 'config.schema.yaml');
+    const schema = yaml.load(fs.readFileSync(schemaPath).toString());
+    const validator = new Ajv({
+      allErrors: true,
+      strict: true,
+      strictSchema: true,
+      strictNumbers: true,
+    });
+    const validate = validator.compile(schema as AnySchema);
+
+    if (!validate(config)) {
+      throw new Error(
+        `config.yaml did not pass validation: ${validator.errorsText(validate.errors)}`,
+      );
+    }
   }
 }

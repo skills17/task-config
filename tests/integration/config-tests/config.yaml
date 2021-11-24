@@ -1,3 +1,4 @@
+id: config-tests
 tests:
 - ./src/tests/**
 - ./test.html

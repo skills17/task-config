@@ -30,7 +30,7 @@ export default class Config {
 
   private groups: RawGroup[] = [];
 
-  private metadata: Record<string, string> = {};
+  private metadata: Record<string, unknown> = {};
 
   /**
    * Load groups from the config.yaml file and create instances of @skills17/test-result
@@ -139,7 +139,7 @@ export default class Config {
     return this.groups;
   }
 
-  public getMetadata(): Record<string, string> {
+  public getMetadata(): Record<string, unknown> {
     return this.metadata;
   }
 

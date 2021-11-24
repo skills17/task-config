@@ -1,3 +1,4 @@
+id: config-default-strategy
 points:
   strategy: deduct
 groups:
