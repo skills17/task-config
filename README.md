@@ -206,12 +206,28 @@ Default: `{}`
 
 Can contain any key and value pair which can be used lated in other libraries.
 
+### Validation
+
+The config file automatically gets validated against a provided schema at runtime when the configuration is loaded.
+Additionally, to get earlier feedback, editors can also be configured to use the provided schema.
+
+The schema is published at: `https://schema.skills17.ch/task-config/v3/config.schema.json`
+
+#### Visual Studio Code
+
+Add the following line at the beginning of the `config.yaml` file and install the [yaml plugin](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml):
+
+```yaml
+# yaml-language-server: $schema=https://schema.skills17.ch/task-config/v3/config.schema.json
+```
+
 ### Full example
 
 Many of the values in this example are default values and can be left out.
 But it shows how a full `config.yaml` can look like and what settings are available.
 
 ```yaml
+# yaml-language-server: $schema=https://schema.skills17.ch/task-config/v3/config.schema.json
 id: js-task-1
 source:
 - ./src/**
