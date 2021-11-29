@@ -6,14 +6,16 @@
   "workspaceFolder": "/workspaces/task-config",
   "remoteUser": "node",
   "extensions": [
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "redhat.vscode-yaml"
   ],
   "settings": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     },
     "editor.tabSize": 2,
-    "editor.rulers": [100]
+    "editor.rulers": [100],
+    "redhat.telemetry.enabled": false
   },
   "postCreateCommand": "npm install"
 }
