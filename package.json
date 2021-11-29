@@ -6,7 +6,7 @@
   "browser": "lib/index.browser.js",
   "files": [
     "lib",
-    "config.schema.yaml"
+    "config.schema.json"
   ],
   "scripts": {
     "build": "npm run build:js && npm run build:types",

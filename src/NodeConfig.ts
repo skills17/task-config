@@ -92,8 +92,8 @@ export default class NodeConfig extends Config {
    * @param config Config object
    */
   private validateSchema(config: any): void { // eslint-disable-line
-    const schemaPath = path.join(__dirname, '..', 'config.schema.yaml');
-    const schema = yaml.load(fs.readFileSync(schemaPath).toString());
+    const schemaPath = path.join(__dirname, '..', 'config.schema.json');
+    const schema = JSON.parse(fs.readFileSync(schemaPath).toString());
     const validator = new Ajv({
       allErrors: true,
       strict: true,

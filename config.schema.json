@@ -1,0 +1,148 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "source": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "database": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "dump": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "serve": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "port": {
+          "type": "number"
+        },
+        "bind": {
+          "type": "string"
+        },
+        "mapping": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "localHistory": {
+      "type": "boolean"
+    },
+    "displayPoints": {
+      "type": "boolean"
+    },
+    "points": {
+      "type": "object",
+      "properties": {
+        "defaultPoints": {
+          "type": "number"
+        },
+        "strategy": {
+          "type": "string",
+          "enum": [
+            "add",
+            "deduct"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "match": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "defaultPoints": {
+            "type": "number"
+          },
+          "strategy": {
+            "type": "string",
+            "enum": [
+              "add",
+              "deduct"
+            ]
+          },
+          "maxPoints": {
+            "type": "number"
+          },
+          "tests": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "match": {
+                  "type": "string"
+                },
+                "points": {
+                  "type": "number"
+                },
+                "required": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "match"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "match"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "additionalProperties": false
+}
